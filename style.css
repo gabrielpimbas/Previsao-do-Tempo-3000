@@ -1,55 +1,41 @@
-/* Importa duas fontes:
-   Orbitron = títulos futurísticos
-   Poppins = textos comuns */
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap");
+/* Importa a fonte Poppins do Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* Remove espaçamentos padrão e facilita o controle dos tamanhos */
+/* =========================
+   CONFIGURAÇÃO GERAL
+   ========================= */
+
 * {
+  /* Remove margens padrão */
   margin: 0;
+
+  /* Remove espaçamentos padrão */
   padding: 0;
+
+  /* Facilita o controle de largura e altura */
   box-sizing: border-box;
 }
 
-/* Estilo geral da página */
+/* =========================
+   BODY
+   ========================= */
+
 body {
+  /* Faz a página ocupar toda a altura da tela */
   min-height: 100vh;
 
+  /* Organiza header, main e footer em coluna */
   display: flex;
   flex-direction: column;
 
-  /* Fundo escuro com efeito de luz azul */
-  background: radial-gradient(
-    circle at top,
-    #102a43 0%,
-    #06111f 35%,
-    #020711 100%
-  );
-
-  color: #dffaff;
-
+  /* Fonte principal do site */
   font-family: "Poppins", sans-serif;
 
-  overflow-x: hidden;
-}
+  /* Cor de fundo */
+  background-color: #f1f7fc;
 
-/* Cria uma grade futurística no fundo */
-body::before {
-  content: "";
-
-  position: fixed;
-  inset: 0;
-
-  /* Linhas horizontais e verticais */
-  background-image:
-    linear-gradient(rgba(0, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.04) 1px, transparent 1px);
-
-  background-size: 40px 40px;
-
-  /* Evita que a grade atrapalhe cliques */
-  pointer-events: none;
-
-  z-index: -1;
+  /* Cor padrão dos textos */
+  color: #1e293b;
 }
 
 /* =========================
@@ -57,46 +43,41 @@ body::before {
    ========================= */
 
 header {
+  /* Centraliza o conteúdo */
   text-align: center;
 
-  padding: 35px 20px;
+  /* Espaçamento interno */
+  padding: 30px 20px;
 
-  /* Linha neon embaixo */
-  border-bottom: 1px solid rgba(0, 255, 255, 0.25);
+  /* Cor do cabeçalho */
+  background-color: #ffffff;
 
-  /* Fundo transparente */
-  background: rgba(0, 15, 30, 0.6);
-
-  /* Efeito de vidro */
-  backdrop-filter: blur(10px);
+  /* Linha inferior suave */
+  border-bottom: 1px solid #dbeafe;
 }
 
 /* Título principal */
 header h1 {
-  font-family: "Orbitron", sans-serif;
+  /* Tamanho do título */
+  font-size: 28px;
 
-  font-size: 32px;
+  /* Peso da fonte */
+  font-weight: 700;
 
-  letter-spacing: 3px;
+  /* Cor do título */
+  color: #2563eb;
 
-  color: #57faff;
-
-  /* Brilho neon */
-  text-shadow:
-    0 0 5px #57faff,
-    0 0 15px #00c8ff,
-    0 0 30px #0077ff;
+  /* Espaço abaixo */
+  margin-bottom: 5px;
 }
 
 /* Texto abaixo do título */
 header p {
-  margin-top: 8px;
+  /* Tamanho do texto */
+  font-size: 15px;
 
-  color: #9ecbd6;
-
-  letter-spacing: 2px;
-
-  font-size: 14px;
+  /* Cor secundária */
+  color: #64748b;
 }
 
 /* =========================
@@ -107,9 +88,10 @@ main {
   /* Faz o main ocupar o espaço restante */
   flex: 1;
 
+  /* Ativa o Flexbox */
   display: flex;
 
-  /* Coloca os elementos um abaixo do outro */
+  /* Organiza os elementos verticalmente */
   flex-direction: column;
 
   /* Centraliza verticalmente */
@@ -118,21 +100,23 @@ main {
   /* Centraliza horizontalmente */
   align-items: center;
 
-  padding: 30px;
+  /* Espaçamento interno */
+  padding: 30px 20px;
 }
 
-/* Título "Consulte o Clima" */
+/* Título da consulta */
 main h2 {
-  font-family: "Orbitron", sans-serif;
+  /* Espaço abaixo */
+  margin-bottom: 20px;
 
-  font-size: 26px;
+  /* Tamanho do texto */
+  font-size: 24px;
 
-  margin-bottom: 25px;
+  /* Peso da fonte */
+  font-weight: 600;
 
-  color: #ffffff;
-
-  /* Brilho azul */
-  text-shadow: 0 0 10px #00eaff;
+  /* Cor */
+  color: #1e293b;
 }
 
 /* =========================
@@ -140,88 +124,48 @@ main h2 {
    ========================= */
 
 form {
+  /* Fundo branco */
+  background-color: #ffffff;
+
+  /* Largura */
   width: 450px;
 
-  /* Evita quebrar em telas pequenas */
-  max-width: 90%;
+  /* Evita ficar grande demais em telas pequenas */
+  max-width: 100%;
 
-  padding: 35px;
+  /* Espaçamento interno */
+  padding: 30px;
 
+  /* Cantos arredondados */
+  border-radius: 12px;
+
+  /* Organiza os elementos em coluna */
   display: flex;
-
   flex-direction: column;
 
-  /* Espaço entre label, input e botão */
-  gap: 15px;
+  /* Espaço entre os elementos */
+  gap: 12px;
 
-  /* Fundo estilo holograma */
-  background: linear-gradient(
-    145deg,
-    rgba(13, 38, 59, 0.75),
-    rgba(2, 13, 25, 0.85)
-  );
+  /* Sombra suave */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 
-  /* Borda azul neon */
-  border: 1px solid rgba(0, 234, 255, 0.5);
-
-  border-radius: 15px;
-
-  /* Efeito de vidro */
-  backdrop-filter: blur(12px);
-
-  /* Sombras externas e internas */
-  box-shadow:
-    0 0 15px rgba(0, 234, 255, 0.15),
-    0 0 40px rgba(0, 102, 255, 0.08),
-    inset 0 0 20px rgba(0, 234, 255, 0.04);
-
-  /* Necessário para os detalhes ::before e ::after */
-  position: relative;
+  /* Borda suave */
+  border: 1px solid #e2e8f0;
 }
 
-/* Linha neon no canto superior do formulário */
-form::before {
-  content: "";
+/* =========================
+   LABEL
+   ========================= */
 
-  position: absolute;
-
-  top: -2px;
-  left: 30px;
-
-  width: 100px;
-  height: 3px;
-
-  background: #00f7ff;
-
-  box-shadow: 0 0 15px #00f7ff;
-}
-
-/* Linha neon no canto inferior do formulário */
-form::after {
-  content: "";
-
-  position: absolute;
-
-  bottom: -2px;
-  right: 30px;
-
-  width: 100px;
-  height: 3px;
-
-  background: #7c4dff;
-
-  box-shadow: 0 0 15px #7c4dff;
-}
-
-/* Texto acima do input */
 form label {
-  font-family: "Orbitron", sans-serif;
+  /* Tamanho */
+  font-size: 14px;
 
-  font-size: 13px;
+  /* Peso */
+  font-weight: 500;
 
-  color: #7ffcff;
-
-  letter-spacing: 1px;
+  /* Cor */
+  color: #475569;
 }
 
 /* =========================
@@ -229,35 +173,35 @@ form label {
    ========================= */
 
 form input {
-  width: 100%;
+  /* Espaçamento interno */
+  padding: 12px 14px;
 
-  padding: 14px 16px;
-
-  border-radius: 8px;
-
-  border: 1px solid #17657a;
-
-  background-color: rgba(0, 10, 20, 0.8);
-
-  color: #ffffff;
-
+  /* Fonte */
   font-family: "Poppins", sans-serif;
 
-  /* Remove contorno padrão do navegador */
+  /* Tamanho do texto */
+  font-size: 15px;
+
+  /* Borda */
+  border: 1px solid #cbd5e1;
+
+  /* Cantos arredondados */
+  border-radius: 8px;
+
+  /* Remove o contorno padrão */
   outline: none;
 
-  /* Suaviza mudanças */
-  transition: 0.3s;
+  /* Animação suave */
+  transition: 0.2s;
 }
 
 /* Quando o usuário clica no input */
 form input:focus {
-  border-color: #00f7ff;
+  /* Muda a cor da borda */
+  border-color: #2563eb;
 
-  /* Cria brilho neon */
-  box-shadow:
-    0 0 8px rgba(0, 247, 255, 0.7),
-    inset 0 0 8px rgba(0, 247, 255, 0.1);
+  /* Cria uma pequena sombra azul */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 /* =========================
@@ -265,72 +209,71 @@ form input:focus {
    ========================= */
 
 form button {
-  margin-top: 5px;
-
-  padding: 14px;
+  /* Espaçamento interno */
+  padding: 12px;
 
   /* Remove borda padrão */
   border: none;
 
+  /* Cantos arredondados */
   border-radius: 8px;
 
-  /* Gradiente futurístico */
-  background: linear-gradient(90deg, #00c8ff, #4169ff, #7c4dff);
+  /* Cor de fundo */
+  background-color: #2563eb;
 
-  color: white;
+  /* Cor do texto */
+  color: #ffffff;
 
-  font-family: "Orbitron", sans-serif;
+  /* Fonte */
+  font-family: "Poppins", sans-serif;
 
-  font-size: 14px;
+  /* Tamanho */
+  font-size: 15px;
 
+  /* Peso da fonte */
   font-weight: 600;
 
-  letter-spacing: 2px;
-
-  /* Muda o cursor para mãozinha */
+  /* Cursor de clique */
   cursor: pointer;
 
-  /* Brilho do botão */
-  box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
-
-  /* Deixa o efeito hover suave */
-  transition: 0.3s;
+  /* Animação suave */
+  transition: 0.2s;
 }
 
-/* Efeito quando passa o mouse no botão */
+/* Efeito ao passar o mouse */
 form button:hover {
-  /* Faz o botão subir um pouco */
-  transform: translateY(-3px);
+  /* Escurece o botão */
+  background-color: #1d4ed8;
 
-  /* Aumenta o brilho */
-  box-shadow:
-    0 0 10px #00eaff,
-    0 0 25px rgba(0, 200, 255, 0.7),
-    0 0 45px rgba(124, 77, 255, 0.4);
+  /* Faz o botão subir levemente */
+  transform: translateY(-1px);
 }
 
 /* =========================
-   RODAPÉ
+   FOOTER
    ========================= */
 
 footer {
+  /* Centraliza o conteúdo */
   text-align: center;
 
+  /* Espaçamento */
   padding: 20px;
 
-  /* Linha separando o footer */
-  border-top: 1px solid rgba(0, 255, 255, 0.15);
+  /* Fundo branco */
+  background-color: #ffffff;
 
-  background: rgba(0, 8, 18, 0.7);
+  /* Linha superior */
+  border-top: 1px solid #dbeafe;
 
-  color: #668b96;
+  /* Cor do texto */
+  color: #64748b;
 
+  /* Tamanho */
   font-size: 13px;
 }
 
-/* Segundo parágrafo do footer */
-footer p:last-child {
-  margin-top: 6px;
-
-  color: #00eaff;
+/* Espaço entre os dois parágrafos */
+footer p + p {
+  margin-top: 5px;
 }
