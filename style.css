@@ -1,111 +1,336 @@
-/*Importa a fonte Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-/*Muda o estilo do body */
+/* Importa duas fontes:
+   Orbitron = títulos futurísticos
+   Poppins = textos comuns */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap");
+
+/* Remove espaçamentos padrão e facilita o controle dos tamanhos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo geral da página */
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f0f0f0;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
+
+  /* Fundo escuro com efeito de luz azul */
+  background: radial-gradient(
+    circle at top,
+    #102a43 0%,
+    #06111f 35%,
+    #020711 100%
+  );
+
+  color: #dffaff;
+
+  font-family: "Poppins", sans-serif;
+
+  overflow-x: hidden;
 }
-/*Muda o estilo do header */
+
+/* Cria uma grade futurística no fundo */
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  /* Linhas horizontais e verticais */
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.04) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+
+  /* Evita que a grade atrapalhe cliques */
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+
 header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  background-color: #1d4ed8;
-  border-radius: 10px;
+
+  padding: 35px 20px;
+
+  /* Linha neon embaixo */
+  border-bottom: 1px solid rgba(0, 255, 255, 0.25);
+
+  /* Fundo transparente */
+  background: rgba(0, 15, 30, 0.6);
+
+  /* Efeito de vidro */
+  backdrop-filter: blur(10px);
 }
-/*Muda o estilo dos títulos do header */
+
+/* Título principal */
 header h1 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 32px;
+
+  letter-spacing: 3px;
+
+  color: #57faff;
+
+  /* Brilho neon */
+  text-shadow:
+    0 0 5px #57faff,
+    0 0 15px #00c8ff,
+    0 0 30px #0077ff;
 }
-/*Muda os parágrafos do header */
+
+/* Texto abaixo do título */
 header p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  color: #ffffff;
+  margin-top: 8px;
+
+  color: #9ecbd6;
+
+  letter-spacing: 2px;
+
+  font-size: 14px;
 }
-/*Muda o estilo do conteúdo principal */
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+   ========================= */
+
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* Faz o main ocupar o espaço restante */
   flex: 1;
+
   display: flex;
+
+  /* Coloca os elementos um abaixo do outro */
+  flex-direction: column;
+
+  /* Centraliza verticalmente */
   justify-content: center;
+
+  /* Centraliza horizontalmente */
   align-items: center;
+
+  padding: 30px;
 }
-/*Muda o estilo dos subtítulos do conteúdo principal */
+
+/* Título "Consulte o Clima" */
 main h2 {
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 26px;
+
   margin-bottom: 25px;
-  color: #1e293b;
+
+  color: #ffffff;
+
+  /* Brilho azul */
+  text-shadow: 0 0 10px #00eaff;
 }
-/*Muda o estilo do formulário */
+
+/* =========================
+   FORMULÁRIO
+   ========================= */
+
 form {
-  background-color: #ffffff;
-  padding: 35px 40px;
-  border-radius: 18px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 450px;
-  max-width: 85%;
+
+  /* Evita quebrar em telas pequenas */
+  max-width: 90%;
+
+  padding: 35px;
+
   display: flex;
+
   flex-direction: column;
-  gap: 12px;
+
+  /* Espaço entre label, input e botão */
+  gap: 15px;
+
+  /* Fundo estilo holograma */
+  background: linear-gradient(
+    145deg,
+    rgba(13, 38, 59, 0.75),
+    rgba(2, 13, 25, 0.85)
+  );
+
+  /* Borda azul neon */
+  border: 1px solid rgba(0, 234, 255, 0.5);
+
+  border-radius: 15px;
+
+  /* Efeito de vidro */
+  backdrop-filter: blur(12px);
+
+  /* Sombras externas e internas */
+  box-shadow:
+    0 0 15px rgba(0, 234, 255, 0.15),
+    0 0 40px rgba(0, 102, 255, 0.08),
+    inset 0 0 20px rgba(0, 234, 255, 0.04);
+
+  /* Necessário para os detalhes ::before e ::after */
+  position: relative;
 }
-/*Muda o estilo do rótulo do formulário */
+
+/* Linha neon no canto superior do formulário */
+form::before {
+  content: "";
+
+  position: absolute;
+
+  top: -2px;
+  left: 30px;
+
+  width: 100px;
+  height: 3px;
+
+  background: #00f7ff;
+
+  box-shadow: 0 0 15px #00f7ff;
+}
+
+/* Linha neon no canto inferior do formulário */
+form::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -2px;
+  right: 30px;
+
+  width: 100px;
+  height: 3px;
+
+  background: #7c4dff;
+
+  box-shadow: 0 0 15px #7c4dff;
+}
+
+/* Texto acima do input */
 form label {
-  font-size: 15px;
-  color: #1e293b;
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 13px;
+
+  color: #7ffcff;
+
+  letter-spacing: 1px;
 }
-/*Muda o estilo do campo de entrada do formulário */
+
+/* =========================
+   INPUT
+   ========================= */
+
 form input {
-  padding: 12px 15px;
-  border: 1px solid #d6eaf8;
+  width: 100%;
+
+  padding: 14px 16px;
+
   border-radius: 8px;
+
+  border: 1px solid #17657a;
+
+  background-color: rgba(0, 10, 20, 0.8);
+
+  color: #ffffff;
+
   font-family: "Poppins", sans-serif;
-  font-size: 15px;
+
+  /* Remove contorno padrão do navegador */
   outline: none;
+
+  /* Suaviza mudanças */
+  transition: 0.3s;
 }
-/*Muda o estilo do campo de entrada quando focado */
+
+/* Quando o usuário clica no input */
 form input:focus {
-  border-color: #4a90e2;
+  border-color: #00f7ff;
+
+  /* Cria brilho neon */
+  box-shadow:
+    0 0 8px rgba(0, 247, 255, 0.7),
+    inset 0 0 8px rgba(0, 247, 255, 0.1);
 }
-/*Muda o estilo do botão do formulário */
+
+/* =========================
+   BOTÃO
+   ========================= */
+
 form button {
-  padding: 12px;
+  margin-top: 5px;
+
+  padding: 14px;
+
+  /* Remove borda padrão */
   border: none;
+
   border-radius: 8px;
-  background-color: #2563eb;
+
+  /* Gradiente futurístico */
+  background: linear-gradient(90deg, #00c8ff, #4169ff, #7c4dff);
+
   color: white;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
+
+  font-family: "Orbitron", sans-serif;
+
+  font-size: 14px;
+
   font-weight: 600;
+
+  letter-spacing: 2px;
+
+  /* Muda o cursor para mãozinha */
   cursor: pointer;
+
+  /* Brilho do botão */
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
+
+  /* Deixa o efeito hover suave */
+  transition: 0.3s;
 }
-/*Muda o estilo do botão quando passa o mouse por cima */
+
+/* Efeito quando passa o mouse no botão */
 form button:hover {
-  background-color: #1d4ed8;
+  /* Faz o botão subir um pouco */
+  transform: translateY(-3px);
+
+  /* Aumenta o brilho */
+  box-shadow:
+    0 0 10px #00eaff,
+    0 0 25px rgba(0, 200, 255, 0.7),
+    0 0 45px rgba(124, 77, 255, 0.4);
 }
-/*Muda o estilo do rodapé */
+
+/* =========================
+   RODAPÉ
+   ========================= */
+
 footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+
+  padding: 20px;
+
+  /* Linha separando o footer */
+  border-top: 1px solid rgba(0, 255, 255, 0.15);
+
+  background: rgba(0, 8, 18, 0.7);
+
+  color: #668b96;
+
+  font-size: 13px;
 }
-/*Muda o estilo dos títulos do rodapé */
-footer h1 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-}
-/*Muda o estilo dos parágrafos do rodapé */
-footer p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+
+/* Segundo parágrafo do footer */
+footer p:last-child {
+  margin-top: 6px;
+
+  color: #00eaff;
 }
