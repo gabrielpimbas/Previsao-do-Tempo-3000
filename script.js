@@ -474,3 +474,21 @@ function identificarClima(codigo) {
     classe: "clima-nublado",
   };
 }
+// ============================================================
+// REGISTRO DO SERVICE WORKER
+// ============================================================
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("./sw.js")
+
+      .then(function (registro) {
+        console.log("Service Worker registrado com sucesso:", registro);
+      })
+
+      .catch(function (erro) {
+        console.error("Erro ao registrar o Service Worker:", erro);
+      });
+  });
+}
