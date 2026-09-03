@@ -1,279 +1,626 @@
-/* Importa a fonte Poppins do Google Fonts */
+/* ========================================================= */
+/* IMPORTAÇÃO DA FONTE                                      */
+/* ========================================================= */
+
+/*
+  Importa a fonte Poppins diretamente do Google Fonts.
+*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* =========================
-   CONFIGURAÇÃO GERAL
-   ========================= */
+/* ========================================================= */
+/* RESET GERAL                                               */
+/* ========================================================= */
 
+/*
+  Remove margens e espaçamentos padrões do navegador.
+*/
 * {
-  /* Remove margens padrão */
   margin: 0;
-
-  /* Remove espaçamentos padrão */
   padding: 0;
 
-  /* Facilita o controle de largura e altura */
   box-sizing: border-box;
 }
 
-/* =========================
-   BODY
-   ========================= */
+/* ========================================================= */
+/* VARIÁVEIS DO TEMA PADRÃO                                 */
+/* ========================================================= */
 
+/*
+  Essas variáveis controlam as principais cores do site.
+
+  Quando o clima muda, o JavaScript adiciona uma classe
+  ao body e as variáveis recebem novas cores.
+*/
 body {
-  /* Faz a página ocupar toda a altura da tela */
-  min-height: 100vh;
+  /* Fundo principal da página */
+  --fundo-inicio: #eef6ff;
+  --fundo-fim: #e6f0fa;
 
-  /* Organiza header, main e footer em coluna */
-  display: flex;
-  flex-direction: column;
+  /* Cor principal */
+  --cor-destaque: #2f67e8;
 
-  /* Fonte principal do site */
-  font-family: "Poppins", sans-serif;
+  /* Cor secundária */
+  --cor-destaque-hover: #2455c7;
 
-  /* Cor de fundo */
-  background-color: #f1f7fc;
+  /* Cor dos textos */
+  --cor-texto: #152238;
 
-  /* Cor padrão dos textos */
-  color: #1e293b;
+  /* Texto secundário */
+  --cor-texto-secundario: #64748b;
+
+  /* Cor da borda */
+  --cor-borda: #d8e3f0;
+
+  /* Fundo dos cards */
+  --cor-card: rgba(255, 255, 255, 0.92);
 }
 
-/* =========================
-   CABEÇALHO
-   ========================= */
+/* ========================================================= */
+/* BODY                                                      */
+/* ========================================================= */
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  font-family: "Poppins", sans-serif;
+
+  color: var(--cor-texto);
+
+  /*
+    Agora o fundo realmente depende
+    das variáveis do clima.
+  */
+  background: linear-gradient(135deg, var(--fundo-inicio), var(--fundo-fim));
+
+  /*
+    Faz a mudança do tema acontecer
+    de maneira suave.
+  */
+  transition:
+    background 0.8s ease,
+    color 0.5s ease;
+}
+
+/* ========================================================= */
+/* CABEÇALHO                                                 */
+/* ========================================================= */
 
 header {
-  /* Centraliza o conteúdo */
-  text-align: center;
+  width: 100%;
 
-  /* Espaçamento interno */
   padding: 30px 20px;
 
-  /* Cor do cabeçalho */
-  background-color: #ffffff;
+  text-align: center;
 
-  /* Linha inferior suave */
-  border-bottom: 1px solid #dbeafe;
+  /*
+    Fundo levemente transparente.
+  */
+  background: rgba(255, 255, 255, 0.88);
+
+  /*
+    Efeito de vidro.
+  */
+  backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid var(--cor-borda);
+
+  transition: border-color 0.5s ease;
 }
 
 /* Título principal */
 header h1 {
-  /* Tamanho do título */
-  font-size: 28px;
+  color: var(--cor-destaque);
 
-  /* Peso da fonte */
+  font-size: 32px;
+
   font-weight: 700;
 
-  /* Cor do título */
-  color: #2563eb;
-
-  /* Espaço abaixo */
-  margin-bottom: 5px;
+  transition: color 0.5s ease;
 }
 
 /* Texto abaixo do título */
 header p {
-  /* Tamanho do texto */
-  font-size: 15px;
+  margin-top: 6px;
 
-  /* Cor secundária */
-  color: #64748b;
+  color: var(--cor-texto-secundario);
+
+  font-size: 15px;
 }
 
-/* =========================
-   CONTEÚDO PRINCIPAL
-   ========================= */
+/* ========================================================= */
+/* CONTEÚDO PRINCIPAL                                       */
+/* ========================================================= */
 
 main {
-  /* Faz o main ocupar o espaço restante */
   flex: 1;
 
-  /* Ativa o Flexbox */
+  width: 100%;
+
   display: flex;
 
-  /* Organiza os elementos verticalmente */
   flex-direction: column;
 
-  /* Centraliza verticalmente */
   justify-content: center;
 
-  /* Centraliza horizontalmente */
   align-items: center;
 
-  /* Espaçamento interno */
-  padding: 30px 20px;
+  padding: 50px 20px;
 }
 
-/* Título da consulta */
-main h2 {
-  /* Espaço abaixo */
-  margin-bottom: 20px;
+/* Título "Consulte o Clima" */
+main > h2 {
+  margin-bottom: 25px;
 
-  /* Tamanho do texto */
-  font-size: 24px;
+  color: var(--cor-texto);
 
-  /* Peso da fonte */
-  font-weight: 600;
+  font-size: 25px;
 
-  /* Cor */
-  color: #1e293b;
+  transition: color 0.5s ease;
 }
 
-/* =========================
-   FORMULÁRIO
-   ========================= */
+/* ========================================================= */
+/* FORMULÁRIO                                                */
+/* ========================================================= */
 
 form {
-  /* Fundo branco */
-  background-color: #ffffff;
-
-  /* Largura */
   width: 450px;
 
-  /* Evita ficar grande demais em telas pequenas */
-  max-width: 100%;
+  max-width: 90%;
 
-  /* Espaçamento interno */
-  padding: 30px;
-
-  /* Cantos arredondados */
-  border-radius: 12px;
-
-  /* Organiza os elementos em coluna */
   display: flex;
+
   flex-direction: column;
 
-  /* Espaço entre os elementos */
   gap: 12px;
 
-  /* Sombra suave */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px;
 
-  /* Borda suave */
-  border: 1px solid #e2e8f0;
+  background: var(--cor-card);
+
+  border: 1px solid var(--cor-borda);
+
+  border-radius: 15px;
+
+  /*
+    Sombra suave.
+  */
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
-/* =========================
-   LABEL
-   ========================= */
+/* ========================================================= */
+/* LABEL                                                     */
+/* ========================================================= */
 
 form label {
-  /* Tamanho */
   font-size: 14px;
 
-  /* Peso */
   font-weight: 500;
 
-  /* Cor */
-  color: #475569;
+  color: var(--cor-texto);
 }
 
-/* =========================
-   INPUT
-   ========================= */
+/* ========================================================= */
+/* INPUT                                                     */
+/* ========================================================= */
 
 form input {
-  /* Espaçamento interno */
-  padding: 12px 14px;
+  width: 100%;
 
-  /* Fonte */
-  font-family: "Poppins", sans-serif;
+  padding: 13px 15px;
 
-  /* Tamanho do texto */
-  font-size: 15px;
+  border: 1px solid var(--cor-borda);
 
-  /* Borda */
-  border: 1px solid #cbd5e1;
-
-  /* Cantos arredondados */
   border-radius: 8px;
 
-  /* Remove o contorno padrão */
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--cor-texto);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 15px;
+
   outline: none;
 
-  /* Animação suave */
-  transition: 0.2s;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 /* Quando o usuário clica no input */
 form input:focus {
-  /* Muda a cor da borda */
-  border-color: #2563eb;
+  border-color: var(--cor-destaque);
 
-  /* Cria uma pequena sombra azul */
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cor-destaque) 15%, transparent);
 }
 
-/* =========================
-   BOTÃO
-   ========================= */
+/* ========================================================= */
+/* BOTÃO                                                     */
+/* ========================================================= */
 
 form button {
-  /* Espaçamento interno */
-  padding: 12px;
+  width: 100%;
 
-  /* Remove borda padrão */
+  padding: 13px;
+
+  margin-top: 3px;
+
   border: none;
 
-  /* Cantos arredondados */
   border-radius: 8px;
 
-  /* Cor de fundo */
-  background-color: #2563eb;
+  background: var(--cor-destaque);
 
-  /* Cor do texto */
-  color: #ffffff;
+  color: white;
 
-  /* Fonte */
   font-family: "Poppins", sans-serif;
 
-  /* Tamanho */
   font-size: 15px;
 
-  /* Peso da fonte */
   font-weight: 600;
 
-  /* Cursor de clique */
   cursor: pointer;
 
-  /* Animação suave */
-  transition: 0.2s;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* Efeito ao passar o mouse */
+/* Hover do botão */
 form button:hover {
-  /* Escurece o botão */
-  background-color: #1d4ed8;
+  background: var(--cor-destaque-hover);
 
-  /* Faz o botão subir levemente */
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* Quando o botão é pressionado */
+form button:active {
+  transform: translateY(0);
+}
 
-footer {
-  /* Centraliza o conteúdo */
+/* ========================================================= */
+/* ÁREA DO RESULTADO                                        */
+/* ========================================================= */
+
+#resultado {
+  width: 450px;
+
+  max-width: 90%;
+
+  margin-top: 25px;
+}
+
+/* ========================================================= */
+/* CARD DO CLIMA                                            */
+/* ========================================================= */
+
+.card-clima {
+  position: relative;
+
+  width: 100%;
+
+  padding: 30px;
+
   text-align: center;
 
-  /* Espaçamento */
-  padding: 20px;
+  background: var(--cor-card);
 
-  /* Fundo branco */
-  background-color: #ffffff;
+  border: 1px solid var(--cor-borda);
 
-  /* Linha superior */
-  border-top: 1px solid #dbeafe;
+  border-radius: 18px;
 
-  /* Cor do texto */
-  color: #64748b;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
 
-  /* Tamanho */
-  font-size: 13px;
+  /*
+    Pequena animação quando o resultado aparece.
+  */
+  animation: aparecerCard 0.4s ease;
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease;
 }
 
-/* Espaço entre os dois parágrafos */
-footer p + p {
-  margin-top: 5px;
+/* ========================================================= */
+/* EMOJI DO CLIMA                                           */
+/* ========================================================= */
+
+/*
+  O emoji fica grande e centralizado.
+
+  Ele aparece acima do nome da cidade,
+  diferente da posição antiga.
+*/
+.icone-clima {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  font-size: 90px;
+
+  line-height: 1;
+
+  /*
+    Pequena animação ao aparecer.
+  */
+  animation: aparecerIcone 0.6s ease;
+}
+
+/* ========================================================= */
+/* NOME DA CIDADE                                           */
+/* ========================================================= */
+
+.nome-cidade {
+  margin-bottom: 4px;
+
+  color: var(--cor-texto);
+
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+/* ========================================================= */
+/* CONDIÇÃO DO CLIMA                                       */
+/* ========================================================= */
+
+.condicao-clima {
+  margin-bottom: 22px;
+
+  color: var(--cor-destaque);
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  transition: color 0.5s ease;
+}
+
+/* ========================================================= */
+/* INFORMAÇÕES DO CLIMA                                    */
+/* ========================================================= */
+
+.informacoes-clima {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+/* Cada linha de informação */
+.informacoes-clima p {
+  padding: 10px;
+
+  color: var(--cor-texto-secundario);
+
+  background: rgba(255, 255, 255, 0.55);
+
+  border-radius: 8px;
+
+  font-size: 15px;
+}
+
+/* Valores importantes */
+.informacoes-clima strong {
+  color: var(--cor-texto);
+}
+
+/* ========================================================= */
+/* MENSAGENS                                                */
+/* ========================================================= */
+
+.mensagem {
+  padding: 15px;
+
+  text-align: center;
+
+  background: var(--cor-card);
+
+  border-radius: 10px;
+
+  color: var(--cor-texto);
+}
+
+/* Mensagem de erro */
+.mensagem.erro {
+  color: #b91c1c;
+
+  background: #fee2e2;
+}
+
+/* ========================================================= */
+/* RODAPÉ                                                   */
+/* ========================================================= */
+
+footer {
+  width: 100%;
+
+  padding: 20px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  border-top: 1px solid var(--cor-borda);
+
+  color: var(--cor-texto-secundario);
+
+  font-size: 13px;
+
+  backdrop-filter: blur(8px);
+}
+
+/* ========================================================= */
+/* TEMA - CÉU LIMPO / SOL                                  */
+/* ========================================================= */
+
+/*
+  Essa classe é adicionada pelo JavaScript
+  quando weather_code = 0.
+*/
+body.clima-sol {
+  --fundo-inicio: #87ceeb;
+
+  --fundo-fim: #fff1b8;
+
+  --cor-destaque: #f59e0b;
+
+  --cor-destaque-hover: #d97706;
+
+  --cor-borda: #f8d477;
+}
+
+/* ========================================================= */
+/* TEMA - NUBLADO                                           */
+/* ========================================================= */
+
+body.clima-nublado {
+  --fundo-inicio: #dbe4ee;
+
+  --fundo-fim: #aebdca;
+
+  --cor-destaque: #64748b;
+
+  --cor-destaque-hover: #475569;
+
+  --cor-borda: #b6c2cf;
+}
+
+/* ========================================================= */
+/* TEMA - CHUVA                                             */
+/* ========================================================= */
+
+body.clima-chuva {
+  --fundo-inicio: #94a3b8;
+
+  --fundo-fim: #52647a;
+
+  --cor-destaque: #2563eb;
+
+  --cor-destaque-hover: #1d4ed8;
+
+  --cor-borda: #94a3b8;
+}
+
+/* ========================================================= */
+/* TEMA - TEMPESTADE                                        */
+/* ========================================================= */
+
+body.clima-tempestade {
+  --fundo-inicio: #475569;
+
+  --fundo-fim: #182234;
+
+  --cor-destaque: #7c3aed;
+
+  --cor-destaque-hover: #6d28d9;
+
+  --cor-borda: #64748b;
+
+  --cor-texto: #172033;
+}
+
+/* ========================================================= */
+/* TEMA - NEVE                                              */
+/* ========================================================= */
+
+body.clima-neve {
+  --fundo-inicio: #e0f2fe;
+
+  --fundo-fim: #f8fafc;
+
+  --cor-destaque: #38bdf8;
+
+  --cor-destaque-hover: #0284c7;
+
+  --cor-borda: #bae6fd;
+}
+
+/* ========================================================= */
+/* ANIMAÇÃO DO CARD                                         */
+/* ========================================================= */
+
+@keyframes aparecerCard {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================= */
+/* ANIMAÇÃO DO EMOJI                                        */
+/* ========================================================= */
+
+@keyframes aparecerIcone {
+  from {
+    opacity: 0;
+
+    transform: scale(0.6);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVIDADE                                           */
+/* ========================================================= */
+
+/*
+  Ajustes para telas menores,
+  como celulares.
+*/
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 25px;
+  }
+
+  main {
+    padding: 35px 15px;
+  }
+
+  form {
+    padding: 25px 20px;
+  }
+
+  .card-clima {
+    padding: 25px 20px;
+  }
+
+  .icone-clima {
+    font-size: 75px;
+  }
+
+  .nome-cidade {
+    font-size: 23px;
+  }
 }
