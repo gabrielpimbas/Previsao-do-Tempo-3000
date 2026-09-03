@@ -1,37 +1,88 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
-    <!-- Título e link que liga o HTML com o css -->
+    <!-- Define a codificação de caracteres da página -->
     <meta charset="UTF-8" />
+
+    <!-- Faz o site se adaptar corretamente em celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título exibido na aba do navegador -->
     <title>Consulta do Clima</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="manifest" href="manifest.json" />
+
+    <!-- Liga o arquivo CSS ao HTML -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Liga o manifest.json ao site -->
+    <link rel="manifest" href="./manifest.json" />
+
     <!-- Ícone da aba do navegador -->
-    <link rel="icon" type="image/png" href="icons/icon-192.png" />
+    <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+
+    <!-- Cor principal utilizada pelo navegador/PWA -->
+    <meta name="theme-color" content="#2f67e8" />
   </head>
+
   <body>
-    <!-- Cabeçalho da página -->
+    <!-- ===================================================== -->
+    <!-- CABEÇALHO                                             -->
+    <!-- ===================================================== -->
+
     <header>
       <h1>Previsão do Tempo 3000</h1>
+
       <p>Descubra o clima na sua cidade!</p>
     </header>
-    <!-- Conteúdo principal -->
+
+    <!-- ===================================================== -->
+    <!-- CONTEÚDO PRINCIPAL                                    -->
+    <!-- ===================================================== -->
+
     <main>
       <h2>Consulte o Clima</h2>
+
+      <!--
+      Formulário utilizado para digitar
+      o nome da cidade.
+    -->
       <form>
-        <label for="cidade">Digite o nome da cidade:</label>
-        <input type="text" id="cidade" name="cidade" required />
+        <label for="cidade"> Digite o nome da cidade: </label>
+
+        <input
+          type="text"
+          id="cidade"
+          name="cidade"
+          placeholder="Ex.: Lages"
+          required
+        />
+
+        <!--
+        type="button" impede o formulário
+        de recarregar a página automaticamente.
+      -->
         <button type="button" id="buscar">Consultar</button>
       </form>
-      <section id="resultado">
-        <!-- O JavaScript colocará o resultado aqui -->
-      </section>
+
+      <!--
+      O JavaScript colocará aqui
+      os dados do clima recebidos pela API.
+    -->
+      <section id="resultado"></section>
     </main>
-    <!-- Rodapé da página -->
+
+    <!-- ===================================================== -->
+    <!-- RODAPÉ                                                -->
+    <!-- ===================================================== -->
+
     <footer>
       <p>&copy; 2026 Previsão do Tempo 3000. Todos os direitos reservados.</p>
     </footer>
-    <script src="script.js"></script>
+
+    <!--
+    O JavaScript é carregado no final
+    para garantir que o HTML já exista
+    antes do script tentar acessar os elementos.
+  -->
+    <script src="./script.js"></script>
   </body>
 </html>
